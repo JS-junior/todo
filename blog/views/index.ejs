@@ -1,0 +1,45 @@
+<html>
+<head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.
+js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMI
+MTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+
+<script src="script.js"></script>
+<script>
+
+</script>
+</head>
+<style>
+
+#heading{
+	text-align: center
+}
+</style>
+<body>
+<h1 id="heading"> Welcome back, User </h1><br><hr>
+<form action="/" method="POST" enctype="multipart/form-data">
+<input type="text" name="title" /><br>
+<input type="text" name="content" /><br>
+<input type="file" name="profile" />
+<button type="submit"> submit </button>
+</form>
+<h1> All posts </h1>
+<button id="btn"> test </button>
+<hr>
+<%  blog.map(doc =>{ %>
+<hr>
+<h1><%= doc.title %> </h1>
+<h3><%= doc.content %></h3>
+<h5><%= doc._id  %></h5>
+<img src="http://localhost:3000/uploads/<%= doc.image %>" />
+<form action="/edit/<%= doc._id %>" method="POST">
+<button type="submit"> edit </button>
+</form>
+<form action="/<%= doc._id %>?_method=DELETE" method="POST">
+<button type="submit"> delete </button>
+</form>
+<%  }) %>
+
+</body>
+</html>
